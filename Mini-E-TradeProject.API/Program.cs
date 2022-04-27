@@ -1,4 +1,8 @@
+using Mini_E_TradeProject.Persistence;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddPersistenceServices();
 
 // Add services to the container.
 
