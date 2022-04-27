@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Mini_E_TradeProject.Application.Abstraction;
-using Mini_E_TradeProject.Persistence.Concrete;
+using Mini_E_TradeProject.Persistence.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mini_E_TradeProject.Persistence
 {
@@ -8,7 +8,10 @@ namespace Mini_E_TradeProject.Persistence
     {
         public static void AddPersistenceServices(this IServiceCollection services)
         {
-            services.AddSingleton<IProductService, ProductService>();
+            services.AddDbContext<ETradeDBContext>
+                (
+                    options => options.UseSqlServer(Configuration.ConnectionString)
+                );
         }
     }
 }

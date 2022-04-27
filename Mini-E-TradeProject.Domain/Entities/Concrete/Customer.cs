@@ -2,13 +2,13 @@
 
 namespace Mini_E_TradeProject.Domain.Entities.Concrete
 {
-    public class Product : BaseEntity
+    public class Customer : BaseEntity
     {
         public string Name { get; set; }
 
-        public int Stock { get; set; }
+        public string Email { get; set; }
 
-        public long Price { get; set; }
+        public string PhoneNumber { get; set; }
 
         public ICollection<Order> Orders { get; set; }
     }
