@@ -9,7 +9,7 @@ namespace Mini_E_TradeProject.Persistence
             get
             {
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/Mini-E-TradeProject.API"));
+                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../ExampleCodeFirst/Mini-E-TradeProject.API"));
                 configurationManager.AddJsonFile("appsettings.json");
 
                 return configurationManager.GetConnectionString("MsSQLServer");
