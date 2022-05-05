@@ -28,6 +28,6 @@ namespace Mini_E_TradeProject.Persistence.Repositories
             => await Table.FirstOrDefaultAsync(query);
 
         public async Task<T> GetByIdAsync(string id)
-            => await Table.FirstOrDefaultAsync(p => p.Id == Guid.Parse(id));
+            => await Table.FindAsync(Guid.Parse(id));
     }
 }

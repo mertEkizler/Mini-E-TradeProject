@@ -1,28 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Mini_E_TradeProject.Application.Abstraction;
 using Mini_E_TradeProject.Application.Repositories;
 
 namespace Mini_E_TradeProject.API.Controllers
 {
+
+    // TEST CONTROLLER
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        //private readonly IProductService _productService;
-
-        //public ProductsController(IProductService productService)
-        //{
-        //    _productService = productService;
-        //}
-
-        //[HttpGet]
-        //public IActionResult GetProducts()
-        //{
-        //    var products = _productService.GetProducts();
-
-        //    return Ok(products);
-        //}
-
         private readonly IProductReadRepository _productReadRepository;
         private readonly IProductWriteRepository _productWriteRepository;
 
@@ -33,15 +21,23 @@ namespace Mini_E_TradeProject.API.Controllers
         }
 
         [HttpGet]
-        public async void Get()
+        public async Task Get()
         {
-           await _productWriteRepository.AddRangeAsync(new()
+            await _productWriteRepository.AddRangeAsync(new()
             {
-                new() { Id = Guid.NewGuid(), Name = "TestName", CreatedDate = DateTime.UtcNow, Price  = 100, Stock = 10 },
-                new() { Id = Guid.NewGuid(), Name = "TestName2", CreatedDate = DateTime.UtcNow, Price = 100, Stock = 10 },
+                new() { Id = Guid.NewGuid(), Name = "TestName3", CreatedDate = DateTime.UtcNow, Price = 105, Stock = 11 },
+                new() { Id = Guid.NewGuid(), Name = "TestName4", CreatedDate = DateTime.UtcNow, Price = 104, Stock = 13 },
             });
 
-           var aa = await _productWriteRepository.SaveAsync();
+            var aa = await _productWriteRepository.SaveAsync();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetByIdAsync(string id)
+        {
+            var response = await _productReadRepository.GetByIdAsync(id);
+
+            return Ok(response);
         }
     }
 }
