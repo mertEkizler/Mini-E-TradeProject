@@ -12,17 +12,25 @@ namespace Mini_E_TradeProject.Persistence
         {
             services.AddDbContext<ETradeDBContext>
                 (
-                    options => options.UseSqlServer(Configuration.ConnectionString)
+                    options => options.UseSqlServer(Configuration.ConnectionString),
+                    ServiceLifetime.Singleton
                 );
 
-            services.AddScoped<ICustomerReadRepository, CustomerReadRepository>();
-            services.AddScoped<ICustomerWriteRepository, CustomerWriteRepository>();
+            #region repositories
 
-            services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
-            services.AddScoped<IOrderReadRepository, OrderReadRepository>();
+            services.AddSingleton<ICustomerReadRepository, CustomerReadRepository>();
+            services.AddSingleton<ICustomerWriteRepository, CustomerWriteRepository>();
 
-            services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
-            services.AddScoped<IProductReadRepository, ProductReadRepository>();
+            services.AddSingleton<IOrderWriteRepository, OrderWriteRepository>();
+            services.AddSingleton<IOrderReadRepository, OrderReadRepository>();
+
+            services.AddSingleton<IProductWriteRepository, ProductWriteRepository>();
+            services.AddSingleton<IProductReadRepository, ProductReadRepository>();
+
+            #endregion
+
+            #region services
+            #endregion
         }
     }
 }
