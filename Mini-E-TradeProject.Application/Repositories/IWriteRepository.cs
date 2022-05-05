@@ -15,7 +15,7 @@ namespace Mini_E_TradeProject.Application.Repositories
 
         Task<bool> RemoveAsync(string id);
 
-        Task<bool> UpdateAsync(string id);
+        bool Update(T model);
 
         Task<int> SaveAsync();
     }

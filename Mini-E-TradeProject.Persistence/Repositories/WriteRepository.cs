@@ -48,14 +48,13 @@ namespace Mini_E_TradeProject.Persistence.Repositories
             return true;
         }
 
-        public Task<int> SaveAsync()
+        public bool Update(T model)
         {
-            throw new NotImplementedException();
+            EntityEntry entityEntry = Table.Update(model);
+            return entityEntry.State == EntityState.Modified;
         }
 
-        public Task<bool> UpdateAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<int> SaveAsync()
+            => await _context.SaveChangesAsync();
     }
 }
