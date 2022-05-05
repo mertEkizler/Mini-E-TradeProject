@@ -18,16 +18,52 @@ namespace Mini_E_TradeProject.Persistence.Repositories
 
         public DbSet<T> Table => _context.Set<T>();
 
-        public IQueryable<T> GetAll()
-            => Table;
+        public IQueryable<T> GetAll(bool tracking = true)
+        {
+            var query = Table.AsQueryable();
 
-        public IQueryable<T> GetWhere(Expression<Func<T, bool>> query)
-            => Table.Where(query);
+            if (!tracking)
+            {
+                query = query.AsNoTracking();
+            }
 
-        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> query)
-            => await Table.FirstOrDefaultAsync(query);
+            return query;
+        }
 
-        public async Task<T> GetByIdAsync(string id)
-            => await Table.FindAsync(Guid.Parse(id));
+        public IQueryable<T> GetWhere(Expression<Func<T, bool>> query, bool tracking = true)
+        {
+            var response = Table.Where(query);
+
+            if (!tracking)
+            {
+                response = response.AsNoTracking();
+            }
+
+            return response;
+        }
+
+        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> query, bool tracking = true)
+        {
+            var response = Table.AsQueryable();
+
+            if (!tracking)
+            {
+                response = response.AsNoTracking();
+            }
+
+            return await response.FirstOrDefaultAsync(query);
+        }
+
+        public async Task<T> GetByIdAsync(string id, bool tracking = true)
+        {
+            var query = Table.AsQueryable();
+
+            if (!tracking)
+            {
+                query = query.AsNoTracking();
+            }
+
+            return await query.FirstOrDefaultAsync(p => p.Id == Guid.Parse(id));
+        }
     }
 }
