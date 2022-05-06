@@ -10,6 +10,8 @@ namespace Mini_E_TradeProject.Domain.Entities.Concrete
 
         public ICollection<Product> Products { get; set; }
 
+        public Guid CustomerId { get; set; }
+
         public Customer Customer { get; set; }
     }
 }
