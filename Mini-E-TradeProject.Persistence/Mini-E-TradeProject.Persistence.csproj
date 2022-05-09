@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mini-E-TradeProject.Application\Mini-E-TradeProject.Application.csproj" />
+    <ProjectReference Include="..\Mini-E-TradeProject.Infrastructure\Mini-E-TradeProject.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

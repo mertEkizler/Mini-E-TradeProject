@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Mini-E-TradeProject.Domain\Mini-E-TradeProject.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Abstraction\" />
-  </ItemGroup>
-
 </Project>

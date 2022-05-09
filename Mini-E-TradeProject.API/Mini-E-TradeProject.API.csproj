@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Mini-E-TradeProject.Persistence\Mini-E-TradeProject.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

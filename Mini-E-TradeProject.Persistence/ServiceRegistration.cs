@@ -3,6 +3,8 @@ using Mini_E_TradeProject.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Mini_E_TradeProject.Application.Repositories;
 using Mini_E_TradeProject.Persistence.Repositories;
+using Mini_E_TradeProject.Infrastructure.Services.Abstract;
+using Mini_E_TradeProject.Infrastructure.Services.Concrete;
 
 namespace Mini_E_TradeProject.Persistence
 {
@@ -29,6 +31,11 @@ namespace Mini_E_TradeProject.Persistence
             #endregion
 
             #region services
+
+            services.AddScoped<ICustomerService, CustomerManager>();
+            services.AddScoped<IProductService, ProductManager>();
+            services.AddScoped<IOrderService, OrderManager>();
+
             #endregion
         }
     }
