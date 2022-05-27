@@ -11,21 +11,20 @@ namespace Mini_E_TradeProject.Infrastructure.Mapping
         {
             #region Business => Entity
 
-            CreateMap<CustomerModel, Customer>()
+            CreateMap<OrderModel, Order>()
                 .IncludeBase<BaseModel, BaseEntity>()
-                .ForMember(dst => dst.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber))
-                .ForMember(dst => dst.Email, opt => opt.MapFrom(src => src.Email))
-                .ForMember(dst => dst.Name, opt => opt.MapFrom(src => src.Name));
+                .ForMember(dst => dst.Address, opt => opt.MapFrom(src => src.Address))
+                .ForMember(dst => dst.CustomerId, opt => opt.Ignore())
+                .ForMember(dst => dst.Description, opt => opt.MapFrom(src => src.Description));
 
             #endregion
 
             #region Entity => Business
 
-            CreateMap<Customer, CustomerModel>()
+            CreateMap<Order, OrderModel>()
                 .IncludeBase<BaseEntity, BaseModel>()
-                .ForMember(dst => dst.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber))
-                .ForMember(dst => dst.Email, opt => opt.MapFrom(src => src.Email))
-                .ForMember(dst => dst.Name, opt => opt.MapFrom(src => src.Name));
+                .ForMember(dst => dst.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dst => dst.Address, opt => opt.MapFrom(src => src.Address));
 
             #endregion
         }
